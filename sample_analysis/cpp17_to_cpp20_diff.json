@@ -1,0 +1,24 @@
+{
+  "commit1": "cpp17_release",
+  "commit2": "cpp20_release",
+  "added_headers": [
+    "span",
+    "coroutine",
+    "concepts",
+    "ranges"
+  ],
+  "removed_headers": [],
+  "changed_dependencies": {
+    "algorithm": {
+      "added": [
+        "concepts"
+      ],
+      "removed": []
+    }
+  },
+  "summary": {
+    "total_headers_before": 6,
+    "total_headers_after": 10,
+    "headers_with_changed_deps": 1
+  }
+}

@@ -1,0 +1,19 @@
+Header Dependency Diff Report
+==================================================
+From: cpp17_release
+To:   cpp20_release
+
+Summary:
+  Headers before: 6
+  Headers after:  10
+  Headers with changed dependencies: 1
+
+Added Headers:
+  + concepts
+  + coroutine
+  + ranges
+  + span
+
+Changed Dependencies:
+  algorithm:
+    + includes concepts

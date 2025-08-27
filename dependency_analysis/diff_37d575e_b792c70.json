@@ -1,0 +1,12 @@
+{
+  "commit1": "37d575e",
+  "commit2": "b792c70",
+  "added_headers": [],
+  "removed_headers": [],
+  "changed_dependencies": {},
+  "summary": {
+    "total_headers_before": 158,
+    "total_headers_after": 158,
+    "headers_with_changed_deps": 0
+  }
+}

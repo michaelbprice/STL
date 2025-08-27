@@ -1,0 +1,29 @@
+{
+  "commit1": "cpp20_release",
+  "commit2": "cpp23_release",
+  "added_headers": [
+    "mdspan",
+    "print",
+    "generator"
+  ],
+  "removed_headers": [],
+  "changed_dependencies": {
+    "ranges": {
+      "added": [
+        "span"
+      ],
+      "removed": []
+    },
+    "string": {
+      "added": [
+        "string_view"
+      ],
+      "removed": []
+    }
+  },
+  "summary": {
+    "total_headers_before": 5,
+    "total_headers_after": 8,
+    "headers_with_changed_deps": 2
+  }
+}

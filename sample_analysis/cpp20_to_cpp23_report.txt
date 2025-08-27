@@ -1,0 +1,21 @@
+Header Dependency Diff Report
+==================================================
+From: cpp20_release
+To:   cpp23_release
+
+Summary:
+  Headers before: 5
+  Headers after:  8
+  Headers with changed dependencies: 2
+
+Added Headers:
+  + generator
+  + mdspan
+  + print
+
+Changed Dependencies:
+  ranges:
+    + includes span
+
+  string:
+    + includes string_view

@@ -1,0 +1,42 @@
+{
+  "commit1": "demo_before",
+  "commit2": "demo_after",
+  "added_headers": [
+    "span",
+    "ranges"
+  ],
+  "removed_headers": [
+    "unordered_map"
+  ],
+  "changed_dependencies": {
+    "vector": {
+      "added": [
+        "ranges"
+      ],
+      "removed": []
+    },
+    "algorithm": {
+      "added": [
+        "concepts"
+      ],
+      "removed": []
+    },
+    "string": {
+      "added": [
+        "string_view"
+      ],
+      "removed": []
+    },
+    "set": {
+      "added": [
+        "utility"
+      ],
+      "removed": []
+    }
+  },
+  "summary": {
+    "total_headers_before": 10,
+    "total_headers_after": 11,
+    "headers_with_changed_deps": 4
+  }
+}
