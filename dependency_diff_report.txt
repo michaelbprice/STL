@@ -1,0 +1,175 @@
+Header Dependency Removals Report
+==================================================
+From: b61483432979aafb6b89b245fb8e82eee7aee32f
+To:   1f6e5b16ec02216665624c1e762f3732605cf2b4
+
+Summary:
+  Headers before: 126
+  Headers after:  158
+  Removed headers: 12
+  Headers with removed dependencies: 43
+  Total removed dependencies: 63
+
+Removed Headers:
+  - cassert
+  - ccomplex
+  - ciso646
+  - cstdalign
+  - cstdbool
+  - ctgmath
+  - hash_map
+  - hash_set
+  - use_ansi.h
+  - xkeycheck.h
+  - xlocinfo.h
+  - xstddef
+
+Removed Dependencies:
+  array:
+    - includes algorithm
+    - includes iterator
+    - includes tuple
+
+  bit:
+    - includes limits
+
+  cctype:
+    - includes yvals.h
+
+  cerrno:
+    - includes yvals.h
+
+  cfenv:
+    - includes yvals.h
+
+  charconv:
+    - includes algorithm
+    - includes charconv
+    - includes cmath
+    - includes limits
+    - includes map
+    - includes system_error
+    - includes tuple
+    - includes type_traits
+    - includes vector
+
+  chrono:
+    - includes limits
+    - includes ratio
+    - includes utility
+    - includes xtimec.h
+
+  cinttypes:
+    - includes yvals.h
+
+  clocale:
+    - includes yvals.h
+
+  compare:
+    - includes xtr1common
+
+  condition_variable:
+    - includes chrono
+
+  csetjmp:
+    - includes yvals.h
+
+  csignal:
+    - includes yvals.h
+
+  cstdarg:
+    - includes yvals.h
+
+  cstdint:
+    - includes yvals.h
+
+  cstring:
+    - includes yvals.h
+
+  ctime:
+    - includes yvals.h
+
+  cuchar:
+    - includes yvals.h
+
+  cwctype:
+    - includes yvals.h
+
+  filesystem:
+    - includes list
+    - includes string_view
+
+  functional:
+    - includes xstddef
+
+  future:
+    - includes chrono
+
+  iosfwd:
+    - includes xstddef
+
+  iso646.h:
+    - includes yvals_core.h
+
+  istream:
+    - includes ostream
+
+  iterator:
+    - includes istream
+
+  limits:
+    - includes xstddef
+
+  mutex:
+    - includes chrono
+    - includes tuple
+
+  numbers:
+    - includes xstddef
+
+  numeric:
+    - includes limits
+
+  optional:
+    - includes xmemory
+
+  ostream:
+    - includes ios
+
+  random:
+    - includes concepts
+    - includes iosfwd
+
+  system_error:
+    - includes yvals_core.h
+
+  thread:
+    - includes chrono
+
+  tuple:
+    - includes new
+    - includes xutility
+
+  type_traits:
+    - includes xstddef
+
+  utility:
+    - includes xstddef
+
+  variant:
+    - includes xmemory
+    - includes xstddef
+
+  xatomic.h:
+    - includes yvals.h
+
+  xbit_ops.h:
+    - includes yvals.h
+
+  xerrc.h:
+    - includes yvals.h
+
+  xlocinfo:
+    - includes xlocinfo.h
+    - includes xstddef
+    - includes yvals_core.h
