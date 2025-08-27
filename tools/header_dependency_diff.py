@@ -46,16 +46,44 @@ class HeaderDependencyAnalyzer:
     def get_standard_headers(self) -> List[str]:
         """Get the list of standard headers to analyze."""
         header_units_json = self.stl_include_dir / "header-units.json"
-        if not header_units_json.exists():
-            raise FileNotFoundError(f"Could not find {header_units_json}")
         
-        data = self.load_json_with_comments(str(header_units_json))
-        headers = data.get("BuildAsHeaderUnits", [])
-        
-        # Add the version headers that are commented out but still important
-        headers.extend(["version", "yvals.h", "yvals_core.h"])
-        
-        return headers
+        if header_units_json.exists():
+            # Use header-units.json if available
+            data = self.load_json_with_comments(str(header_units_json))
+            headers = data.get("BuildAsHeaderUnits", [])
+            
+            # Add the version headers that are commented out but still important
+            headers.extend(["version", "yvals.h", "yvals_core.h"])
+            
+            return headers
+        else:
+            # Fallback to discovering headers from filesystem for older commits
+            print(f"Warning: {header_units_json} not found, discovering headers from filesystem")
+            headers = []
+            
+            if self.stl_include_dir.exists():
+                for item in self.stl_include_dir.iterdir():
+                    if item.is_file():
+                        # Include standard C++ headers (no extension) and some key headers
+                        if ('.' not in item.name or 
+                            item.name.endswith('.h') or 
+                            item.name in ['version']):
+                            headers.append(item.name)
+            
+            # Filter to likely standard headers (exclude internal implementation files)
+            filtered_headers = []
+            for header in sorted(headers):
+                # Skip obviously internal files
+                if (not header.startswith('_') and 
+                    not header.startswith('xtr1') and
+                    not header.startswith('xtree') and
+                    not header.startswith('xhash') and
+                    not header.startswith('xstring') and
+                    not header.startswith('xutility') and
+                    not header.startswith('xmemory')):
+                    filtered_headers.append(header)
+            
+            return filtered_headers
     
     def extract_dependencies_at_commit(self, commit_sha: str) -> Dict[str, List[str]]:
         """Extract header dependencies at a specific commit."""
