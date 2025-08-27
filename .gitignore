@@ -9,3 +9,8 @@ __pycache__/
 /tools/out/
 /CMakeLists.txt.user
 *.log
+
+# Header dependency analysis output
+dependency_analysis/
+demo_output/
+sample_analysis/
