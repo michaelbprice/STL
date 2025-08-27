@@ -1,4 +1,4 @@
-Header Dependency Diff Report
+Header Dependency Removals Report
 ==================================================
 From: b61483432979aafb6b89b245fb8e82eee7aee32f
 To:   1f6e5b16ec02216665624c1e762f3732605cf2b4
@@ -6,53 +6,9 @@ To:   1f6e5b16ec02216665624c1e762f3732605cf2b4
 Summary:
   Headers before: 126
   Headers after:  158
-  Headers with changed dependencies: 69
-
-Added Headers:
-  + __msvc_bit_utils.hpp
-  + __msvc_chrono.hpp
-  + __msvc_cxx_stdatomic.hpp
-  + __msvc_filebuf.hpp
-  + __msvc_format_ucd_tables.hpp
-  + __msvc_formatter.hpp
-  + __msvc_heap_algorithms.hpp
-  + __msvc_int128.hpp
-  + __msvc_iter_core.hpp
-  + __msvc_minmax.hpp
-  + __msvc_ostream.hpp
-  + __msvc_print.hpp
-  + __msvc_ranges_to.hpp
-  + __msvc_ranges_tuple_formatter.hpp
-  + __msvc_sanitizer_annotate_container.hpp
-  + __msvc_string_view.hpp
-  + __msvc_system_error_abi.hpp
-  + __msvc_threads_core.hpp
-  + __msvc_tzdb.hpp
-  + __msvc_xlocinfo_types.hpp
-  + barrier
-  + coroutine
-  + expected
-  + format
-  + generator
-  + latch
-  + mdspan
-  + print
-  + semaphore
-  + source_location
-  + span
-  + spanstream
-  + stacktrace
-  + stdfloat
-  + stop_token
-  + syncstream
-  + xatomic_wait.h
-  + xcharconv_tables.h
-  + xhash
-  + xmemory
-  + xstring
-  + xtr1common
-  + xtree
-  + xutility
+  Removed headers: 12
+  Headers with removed dependencies: 43
+  Total removed dependencies: 63
 
 Removed Headers:
   - cassert
@@ -68,49 +24,25 @@ Removed Headers:
   - xlocinfo.h
   - xstddef
 
-Changed Dependencies:
-  algorithm:
-    + includes __msvc_heap_algorithms.hpp
-    + includes __msvc_minmax.hpp
-    + includes optional
-
+Removed Dependencies:
   array:
-    + includes xutility
     - includes algorithm
     - includes iterator
     - includes tuple
 
-  atomic:
-    + includes cstddef
-    + includes cstdint
-    + includes cstring
-    + includes xatomic_wait.h
-    + includes xthreads.h
-
   bit:
-    + includes __msvc_bit_utils.hpp
-    + includes cstdlib
     - includes limits
 
-  bitset:
-    + includes __msvc_bit_utils.hpp
-
   cctype:
-    + includes yvals_core.h
     - includes yvals.h
 
   cerrno:
-    + includes yvals_core.h
     - includes yvals.h
 
   cfenv:
-    + includes yvals_core.h
     - includes yvals.h
 
   charconv:
-    + includes cstring
-    + includes xbit_ops.h
-    + includes xcharconv_tables.h
     - includes algorithm
     - includes charconv
     - includes cmath
@@ -122,138 +54,73 @@ Changed Dependencies:
     - includes vector
 
   chrono:
-    + includes __msvc_chrono.hpp
-    + includes __msvc_tzdb.hpp
-    + includes atomic
-    + includes cmath
-    + includes compare
-    + includes concepts
-    + includes cstdint
-    + includes format
-    + includes forward_list
-    + includes iomanip
-    + includes istream
-    + includes memory
-    + includes optional
-    + includes sstream
-    + includes string
-    + includes system_error
-    + includes vector
-    + includes xfilesystem_abi.h
-    + includes xloctime
-    + includes xstring
-    + includes xthreads.h
     - includes limits
     - includes ratio
     - includes utility
     - includes xtimec.h
 
   cinttypes:
-    + includes yvals_core.h
     - includes yvals.h
 
   clocale:
-    + includes yvals_core.h
     - includes yvals.h
 
-  cmath:
-    + includes type_traits
-
   compare:
-    + includes concepts
     - includes xtr1common
 
-  complex:
-    + includes __msvc_bit_utils.hpp
-    + includes cstdint
-    + includes limits
-    + includes type_traits
-    + includes xutility
-
   condition_variable:
-    + includes __msvc_chrono.hpp
-    + includes stop_token
     - includes chrono
 
   csetjmp:
-    + includes yvals_core.h
     - includes yvals.h
 
   csignal:
-    + includes yvals_core.h
     - includes yvals.h
 
   cstdarg:
-    + includes yvals_core.h
     - includes yvals.h
 
   cstdint:
-    + includes yvals_core.h
     - includes yvals.h
 
   cstring:
-    + includes yvals_core.h
     - includes yvals.h
 
   ctime:
-    + includes yvals_core.h
     - includes yvals.h
 
   cuchar:
-    + includes yvals_core.h
     - includes yvals.h
 
   cwctype:
-    + includes yvals_core.h
     - includes yvals.h
 
-  exception:
-    + includes cstdlib
-
   filesystem:
-    + includes compare
     - includes list
     - includes string_view
 
-  fstream:
-    + includes __msvc_filebuf.hpp
-
   functional:
-    + includes compare
     - includes xstddef
 
   future:
-    + includes __msvc_chrono.hpp
     - includes chrono
 
   iosfwd:
-    + includes xtr1common
     - includes xstddef
-
-  iostream:
-    + includes ostream
 
   iso646.h:
     - includes yvals_core.h
 
   istream:
-    + includes __msvc_ostream.hpp
     - includes ostream
 
   iterator:
-    + includes iosfwd
     - includes istream
 
   limits:
-    + includes xtr1common
     - includes xstddef
 
-  memory:
-    + includes atomic
-
   mutex:
-    + includes __msvc_chrono.hpp
-    + includes cstdlib
     - includes chrono
     - includes tuple
 
@@ -261,161 +128,48 @@ Changed Dependencies:
     - includes xstddef
 
   numeric:
-    + includes __msvc_bit_utils.hpp
     - includes limits
 
   optional:
-    + includes compare
-    + includes xutility
     - includes xmemory
 
   ostream:
-    + includes __msvc_filebuf.hpp
-    + includes __msvc_ostream.hpp
-    + includes __msvc_print.hpp
-    + includes format
     - includes ios
 
-  queue:
-    + includes __msvc_heap_algorithms.hpp
-    + includes __msvc_ranges_to.hpp
-    + includes __msvc_ranges_tuple_formatter.hpp
-    + includes iterator
-
   random:
-    + includes __msvc_int128.hpp
-    + includes cstdint
-    + includes ios
-    + includes xbit_ops.h
     - includes concepts
     - includes iosfwd
 
-  ranges:
-    + includes __msvc_int128.hpp
-    + includes __msvc_ranges_to.hpp
-    + includes array
-    + includes bit
-    + includes iosfwd
-    + includes limits
-    + includes span
-    + includes string_view
-    + includes tuple
-
-  ratio:
-    + includes cstdint
-
-  stack:
-    + includes __msvc_ranges_to.hpp
-    + includes __msvc_ranges_tuple_formatter.hpp
-    + includes iterator
-
-  string_view:
-    + includes __msvc_string_view.hpp
-
   system_error:
-    + includes __msvc_system_error_abi.hpp
-    + includes atomic
-    + includes compare
-    + includes yvals.h
     - includes yvals_core.h
 
   thread:
-    + includes __msvc_chrono.hpp
-    + includes __msvc_formatter.hpp
-    + includes compare
-    + includes stop_token
     - includes chrono
 
   tuple:
-    + includes __msvc_iter_core.hpp
-    + includes compare
     - includes new
     - includes xutility
 
   type_traits:
-    + includes cstddef
-    + includes cstdint
-    + includes cstring
-    + includes xtr1common
     - includes xstddef
 
-  typeindex:
-    + includes compare
-    + includes cstring
-
   utility:
-    + includes compare
-    + includes cstdlib
-    + includes initializer_list
     - includes xstddef
 
   variant:
-    + includes compare
-    + includes xutility
     - includes xmemory
     - includes xstddef
 
-  vector:
-    + includes __msvc_bit_utils.hpp
-    + includes __msvc_formatter.hpp
-    + includes __msvc_sanitizer_annotate_container.hpp
-
   xatomic.h:
-    + includes yvals_core.h
     - includes yvals.h
 
   xbit_ops.h:
-    + includes cstdint
-    + includes yvals_core.h
     - includes yvals.h
-
-  xcall_once.h:
-    + includes cstdlib
-    + includes type_traits
-
-  xcharconv.h:
-    + includes cstdint
-
-  xcharconv_ryu.h:
-    + includes cstring
-    + includes type_traits
-    + includes utility
-    + includes xutility
-
-  xcharconv_ryu_tables.h:
-    + includes cstdint
 
   xerrc.h:
-    + includes yvals_core.h
     - includes yvals.h
 
-  xfilesystem_abi.h:
-    + includes cstdint
-
   xlocinfo:
-    + includes __msvc_xlocinfo_types.hpp
-    + includes cctype
-    + includes clocale
-    + includes cstdio
-    + includes cwchar
-    + includes yvals.h
     - includes xlocinfo.h
     - includes xstddef
     - includes yvals_core.h
-
-  xlocmon:
-    + includes iterator
-
-  xlocnum:
-    + includes cfloat
-    + includes iterator
-
-  xloctime:
-    + includes iterator
-
-  xthreads.h:
-    + includes __msvc_threads_core.hpp
-    + includes climits
-
-  xtimec.h:
-    + includes ctime

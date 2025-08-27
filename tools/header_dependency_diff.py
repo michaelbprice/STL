@@ -240,27 +240,31 @@ class DependencyComparator:
         }
     
     def format_diff_report(self, diff: dict) -> str:
-        """Format the diff as a human-readable report."""
+        """Format the diff as a human-readable report focusing on removals only."""
         lines = []
-        lines.append(f"Header Dependency Diff Report")
+        lines.append(f"Header Dependency Removals Report")
         lines.append(f"=" * 50)
         lines.append(f"From: {diff['commit1']}")
         lines.append(f"To:   {diff['commit2']}")
         lines.append("")
         
-        # Summary
+        # Summary - focus on removals
         lines.append("Summary:")
         lines.append(f"  Headers before: {diff['summary']['total_headers_before']}")
         lines.append(f"  Headers after:  {diff['summary']['total_headers_after']}")
-        lines.append(f"  Headers with changed dependencies: {diff['summary']['headers_with_changed_deps']}")
-        lines.append("")
+        lines.append(f"  Removed headers: {len(diff['removed_headers'])}")
         
-        # Added headers
-        if diff['added_headers']:
-            lines.append("Added Headers:")
-            for header in sorted(diff['added_headers']):
-                lines.append(f"  + {header}")
-            lines.append("")
+        # Count headers with removed dependencies
+        headers_with_removed_deps = 0
+        total_removed_deps = 0
+        for header, changes in diff['changed_dependencies'].items():
+            if changes['removed']:
+                headers_with_removed_deps += 1
+                total_removed_deps += len(changes['removed'])
+        
+        lines.append(f"  Headers with removed dependencies: {headers_with_removed_deps}")
+        lines.append(f"  Total removed dependencies: {total_removed_deps}")
+        lines.append("")
         
         # Removed headers
         if diff['removed_headers']:
@@ -269,20 +273,20 @@ class DependencyComparator:
                 lines.append(f"  - {header}")
             lines.append("")
         
-        # Changed dependencies
-        if diff['changed_dependencies']:
-            lines.append("Changed Dependencies:")
-            for header in sorted(diff['changed_dependencies'].keys()):
-                changes = diff['changed_dependencies'][header]
+        # Changed dependencies - only show removals
+        headers_with_removals = {}
+        for header, changes in diff['changed_dependencies'].items():
+            if changes['removed']:
+                headers_with_removals[header] = changes
+        
+        if headers_with_removals:
+            lines.append("Removed Dependencies:")
+            for header in sorted(headers_with_removals.keys()):
+                changes = headers_with_removals[header]
                 lines.append(f"  {header}:")
                 
-                if changes['added']:
-                    for dep in sorted(changes['added']):
-                        lines.append(f"    + includes {dep}")
-                
-                if changes['removed']:
-                    for dep in sorted(changes['removed']):
-                        lines.append(f"    - includes {dep}")
+                for dep in sorted(changes['removed']):
+                    lines.append(f"    - includes {dep}")
                 
                 lines.append("")
         
